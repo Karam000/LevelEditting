@@ -30,17 +30,17 @@ public class AnimatePlayer : MonoBehaviour
             animator.SetBool(idleIDanim, true);
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             this.transform.Rotate(Vector3.up, 180);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             this.transform.Rotate(Vector3.up, 90);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             this.transform.Rotate(Vector3.up, -90);
         }
