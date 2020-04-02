@@ -9,15 +9,11 @@ public class CheckDetection : MonoBehaviour
     [SerializeField] GameObject _RestartPanel;
     float TaregtTime = 5.0f;
 
-    
-    // Start is called before the first frame update
     void Start()
     {
-      
+        Time.timeScale = 1.0f;
     }
-
     
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
@@ -48,8 +44,5 @@ public class CheckDetection : MonoBehaviour
             TaregtTime = 10.0f;
         }
     }
-    //void CheckingDetection()
-    //{
-        
-    //}
+   
 }
