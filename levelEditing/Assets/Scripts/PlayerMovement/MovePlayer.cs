@@ -16,9 +16,12 @@ public class MovePlayer : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
+
+
+    // trial 1
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        moveDirection = new Vector3(Input.GetAxis("Vertical"), 0.0f, Input.GetAxis("Horizontal"));
 
         moveDirection *= speed;
         Debug.Log(transform.rotation.y);
