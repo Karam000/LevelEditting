@@ -7,129 +7,105 @@ public class MovePlayer : MonoBehaviour
     CharacterController characterController;
 
     public float speed = 3.0f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
-    private Vector3 moveDirection = Vector3.zero;
+    float gravity = 20.0f;
+    private Vector3 movementForce = Vector3.zero;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        characterController = this.GetComponent<CharacterController>();
     }
 
 
 
-    // trial 3, only up 
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxis("Vertical"), 0.0f, Input.GetAxis("Horizontal"));
+        movementForce = new Vector3(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));
 
-        moveDirection *= speed;
-        Debug.Log(transform.rotation.y);
+        movementForce *= speed;
+
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if ((Mathf.Abs(this.transform.rotation.y)) == 1)
             {
-                this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.TransformDirection(moveDirection);
+                this.transform.Rotate(Vector3.up, -90);
+                movementForce = transform.InverseTransformDirection(movementForce);
             }
             else if(this.transform.rotation.y == 0)
             {
-                this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.TransformDirection(moveDirection);
+                this.transform.Rotate(Vector3.up, 90);
+                movementForce = transform.InverseTransformDirection(movementForce);
             }
             else if (this.transform.rotation.y == -0.7071068f)
             {
-                this.transform.Rotate(Vector3.up, -180);
-                moveDirection = transform.TransformDirection(moveDirection);
+                this.transform.Rotate(Vector3.up, 180);
+                movementForce = transform.InverseTransformDirection(movementForce);
             }
-
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if ((Mathf.Abs(this.transform.rotation.y)) == 0)
+            if ((Mathf.Abs(this.transform.rotation.y)) == 1)
             {
-                this.transform.Rotate(Vector3.up, 180);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                this.transform.Rotate(Vector3.up, 90);
+                movementForce = transform.InverseTransformDirection(movementForce);
+            }
+            else if (this.transform.rotation.y == 0)
+            {
+                this.transform.Rotate(Vector3.up, -90);
+                movementForce = transform.InverseTransformDirection(movementForce);
             }
             else if (this.transform.rotation.y == 0.7071068f)
             {
-                this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
-            }
-            else if (this.transform.rotation.y == -0.7071068f)
-            {
-                this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                this.transform.Rotate(Vector3.up, -180);
+                movementForce = transform.InverseTransformDirection(movementForce);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (transform.rotation.y == 0)
-            {
-                this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.TransformDirection(moveDirection);
-            }
-
-            else if (Mathf.Abs(transform.rotation.y) == 1)
+            if (transform.rotation.y == -0.7071068f)
             {
                 this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.TransformDirection(moveDirection);
-            }
-
-            else if (this.transform.rotation.y == -0.7071068f)
-            {
-                this.transform.Rotate(Vector3.up, 180);
-                moveDirection = transform.TransformDirection(moveDirection);
-            }
-
-
-
-
-
-            //if ((Mathf.Abs(this.transform.rotation.y)) == 0)
-            //{
-            //    this.transform.Rotate(Vector3.up, 90);
-            //    moveDirection = transform.InverseTransformDirection(moveDirection);
-            //}
-            //else if ((Mathf.Abs(this.transform.rotation.y)) == 0.7071068f)
-            //{
-            //    this.transform.Rotate(Vector3.up, 90);
-            //    moveDirection = transform.InverseTransformDirection(moveDirection);
-            //}
-            //else if ((Mathf.Abs(this.transform.rotation.y)) == -0.7071068f)
-            //{
-            //    this.transform.Rotate(Vector3.up, 90);
-            //    moveDirection = transform.InverseTransformDirection(moveDirection);
-            //}
-        }
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (transform.rotation.y == 0)
-            {
-                this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.TransformDirection(moveDirection);
-            }
-
-            else if (Mathf.Abs(transform.rotation.y) == 1)
-            {
-                this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.TransformDirection(moveDirection);
+                movementForce = transform.TransformDirection(movementForce);
             }
 
             else if (this.transform.rotation.y == 0.7071068f)
             {
-                this.transform.Rotate(Vector3.up, -180);
-                moveDirection = transform.TransformDirection(moveDirection);
+                this.transform.Rotate(Vector3.up, 90);
+                movementForce = transform.TransformDirection(movementForce);
+            }
+
+            else if(this.transform.rotation.y == 0)
+            {
+                this.transform.Rotate(Vector3.up, 180);
+                movementForce = transform.TransformDirection(movementForce);
             }
         }
 
-        //moveDirection = transform.TransformDirection(moveDirection);
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (transform.rotation.y == -0.7071068f)
+            {
+                this.transform.Rotate(Vector3.up, 90);
+                movementForce = transform.TransformDirection(movementForce);
+            }
 
-        moveDirection.y -= gravity * Time.deltaTime;
+            else if (this.transform.rotation.y == 0.7071068f)
+            {
+                this.transform.Rotate(Vector3.up, -90);
+                movementForce = transform.TransformDirection(movementForce);
+            }
 
-        characterController.Move(moveDirection * Time.deltaTime);
+            else if (Mathf.Abs(this.transform.rotation.y) == 1)
+            {
+                this.transform.Rotate(Vector3.up, -180);
+                movementForce = transform.TransformDirection(movementForce);
+            }
+        }
+
+        movementForce.y -= gravity * Time.deltaTime;
+
+        characterController.Move(movementForce * Time.deltaTime);
     }
 }

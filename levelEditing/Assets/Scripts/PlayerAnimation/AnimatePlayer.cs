@@ -9,7 +9,7 @@ public class AnimatePlayer : MonoBehaviour
     int idleIDanim = -1;
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = this.GetComponent<Animator>();
 
         walkIDanim = Animator.StringToHash("Walk");
         idleIDanim = Animator.StringToHash("Idle");
@@ -20,52 +20,52 @@ public class AnimatePlayer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            AnimateWALK();
+            AnimateWalk();
         }
 
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            AnimateIDLE();
+            AnimateIdle();
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            AnimateWALK();
+            AnimateWalk();
         }
 
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            AnimateIDLE();
+            AnimateIdle();
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            AnimateWALK();
+            AnimateWalk();
         }
 
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
-            AnimateIDLE();
+            AnimateIdle();
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            AnimateWALK();
+            AnimateWalk();
         }
 
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
-            AnimateIDLE();
+            AnimateIdle();
         }
     }
 
-    private void AnimateIDLE()
+    private void AnimateIdle()
     {
         animator.SetBool(walkIDanim, false);
         animator.SetBool(idleIDanim, true);
     }
 
-    private void AnimateWALK()
+    private void AnimateWalk()
     {
         animator.SetBool(walkIDanim, true);
         animator.SetBool(idleIDanim, false);
