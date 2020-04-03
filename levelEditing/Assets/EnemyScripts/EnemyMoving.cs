@@ -33,7 +33,7 @@ public class EnemyMoving : MonoBehaviour
         Target.y = transform.position.y;
         Vector3 MoveDirection = Target - transform.position;
 
-        if (MoveDirection.sqrMagnitude < 0.2f)
+        if (MoveDirection.sqrMagnitude < 0.02f)
         {
             if (_IsForward == true)
                 _NextPoint++;
