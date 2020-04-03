@@ -12,13 +12,13 @@ public class Waypoints : MonoBehaviour
     {
         if (translist == null)
             return;
-       
+
         for (int i = 0; i < translist.Length; i++)
         {
-             Gizmos.color = Color.red;
-             Gizmos.DrawSphere(translist[i].position, 0.3f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(translist[i].position, 0.3f);
         }
-        for (int i = 0; i < translist.Length-1; i++)
+        for (int i = 0; i < translist.Length - 1; i++)
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawLine(translist[i].position, translist[i + 1].position);

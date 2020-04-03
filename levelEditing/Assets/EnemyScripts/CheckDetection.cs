@@ -7,7 +7,7 @@ public class CheckDetection : MonoBehaviour
 {
    
     [SerializeField] GameObject _RestartPanel;
-    float TaregtTime = 5.0f;
+    float TaregtTime = 1.0f;
 
     
     // Start is called before the first frame update

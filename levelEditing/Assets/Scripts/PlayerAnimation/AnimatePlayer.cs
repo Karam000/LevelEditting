@@ -20,29 +20,54 @@ public class AnimatePlayer : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            animator.SetBool(walkIDanim, true);
-            animator.SetBool(idleIDanim, false);
+            AnimateWALK();
         }
 
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
-            animator.SetBool(walkIDanim, false);
-            animator.SetBool(idleIDanim, true);
+            AnimateIDLE();
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
-            this.transform.Rotate(Vector3.up, 180);
+            AnimateWALK();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            this.transform.Rotate(Vector3.up, 90);
+            AnimateIDLE();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
-            this.transform.Rotate(Vector3.up, -90);
+            AnimateWALK();
         }
+
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            AnimateIDLE();
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            AnimateWALK();
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            AnimateIDLE();
+        }
+    }
+
+    private void AnimateIDLE()
+    {
+        animator.SetBool(walkIDanim, false);
+        animator.SetBool(idleIDanim, true);
+    }
+
+    private void AnimateWALK()
+    {
+        animator.SetBool(walkIDanim, true);
+        animator.SetBool(idleIDanim, false);
     }
 }
