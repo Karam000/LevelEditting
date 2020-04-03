@@ -18,7 +18,7 @@ public class MovePlayer : MonoBehaviour
 
 
 
-    // trial 1
+    // trial 2, only up and transform direction is modified
     void Update()
     {
         moveDirection = new Vector3(Input.GetAxis("Vertical"), 0.0f, Input.GetAxis("Horizontal"));
@@ -29,18 +29,18 @@ public class MovePlayer : MonoBehaviour
         {
             if ((Mathf.Abs(this.transform.rotation.y)) == 1)
             {
-                this.transform.Rotate(Vector3.up, -180);
-                moveDirection = transform.TransformDirection(moveDirection);
-            }
-            else if(this.transform.rotation.y == 0.7071068f)
-            {
                 this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.TransformDirection(moveDirection);
+                moveDirection = transform.InverseTransformDirection(moveDirection);
+            }
+            else if(this.transform.rotation.y == 0)
+            {
+                this.transform.Rotate(Vector3.up, -90);
+                moveDirection = transform.InverseTransformDirection(moveDirection);
             }
             else if (this.transform.rotation.y == -0.7071068f)
             {
-                this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.TransformDirection(moveDirection);
+                this.transform.Rotate(Vector3.up, -180);
+                moveDirection = transform.InverseTransformDirection(moveDirection);
             }
 
         }
@@ -50,17 +50,17 @@ public class MovePlayer : MonoBehaviour
             if ((Mathf.Abs(this.transform.rotation.y)) == 0)
             {
                 this.transform.Rotate(Vector3.up, 180);
-                moveDirection = transform.TransformDirection(moveDirection);
+                moveDirection = transform.InverseTransformDirection(moveDirection);
             }
             else if (this.transform.rotation.y == 0.7071068f)
             {
                 this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.TransformDirection(moveDirection);
+                moveDirection = transform.InverseTransformDirection(moveDirection);
             }
             else if (this.transform.rotation.y == -0.7071068f)
             {
                 this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.TransformDirection(moveDirection);
+                moveDirection = transform.InverseTransformDirection(moveDirection);
             }
         }
 
@@ -69,19 +69,19 @@ public class MovePlayer : MonoBehaviour
             if (transform.rotation.y == 0)
             {
                 this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                moveDirection = transform.TransformDirection(moveDirection);
             }
 
             else if (Mathf.Abs(transform.rotation.y) == 1)
             {
                 this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                moveDirection = transform.TransformDirection(moveDirection);
             }
 
             else if (this.transform.rotation.y == -0.7071068f)
             {
                 this.transform.Rotate(Vector3.up, 180);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                moveDirection = transform.TransformDirection(moveDirection);
             }
 
 
@@ -110,19 +110,19 @@ public class MovePlayer : MonoBehaviour
             if (transform.rotation.y == 0)
             {
                 this.transform.Rotate(Vector3.up, -90);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                moveDirection = transform.TransformDirection(moveDirection);
             }
 
             else if (Mathf.Abs(transform.rotation.y) == 1)
             {
                 this.transform.Rotate(Vector3.up, 90);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                moveDirection = transform.TransformDirection(moveDirection);
             }
 
             else if (this.transform.rotation.y == 0.7071068f)
             {
                 this.transform.Rotate(Vector3.up, -180);
-                moveDirection = transform.InverseTransformDirection(moveDirection);
+                moveDirection = transform.TransformDirection(moveDirection);
             }
         }
 
